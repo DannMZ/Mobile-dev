@@ -1,35 +1,70 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { createContext, useState, useEffect, useCallback, useMemo } from "react";
+import TaskList from "./TaskList";
+import TaskFilter from "./TaskFilter";
+import TaskForm from "./TaskForm";
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+// Опис структури контексту
+interface Task {
+  id: number;
+  text: string;
+  completed: boolean;
 }
 
-export default App
+interface TaskContextType {
+  tasks: Task[];
+  addTask: (text: string) => void;
+  toggleTask: (id: number) => void;
+  deleteTask: (id: number) => void;
+  setFilter: (filter: string) => void;
+}
+
+// Створення контексту з початковим значенням `null`
+export const TaskContext = createContext<TaskContextType | null>(null);
+
+const App: React.FC = () => {
+  const [tasks, setTasks] = useState<Task[]>(() => {
+    const savedTasks = localStorage.getItem("tasks");
+    return savedTasks ? JSON.parse(savedTasks) : [];
+  });
+  const [filter, setFilter] = useState<string>("all");
+
+  // Збереження у LocalStorage
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
+
+  const addTask = useCallback((text: string) => {
+    setTasks((prevTasks) => [...prevTasks, { id: Date.now(), text, completed: false }]);
+  }, []);
+
+  const toggleTask = useCallback((id: number) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) => (task.id === id ? { ...task, completed: !task.completed } : task))
+    );
+  }, []);
+
+  const deleteTask = useCallback((id: number) => {
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
+  }, []);
+
+  const filteredTasks = useMemo(() => {
+    return tasks.filter((task) => {
+      if (filter === "active") return !task.completed;
+      if (filter === "completed") return task.completed;
+      return true;
+    });
+  }, [tasks, filter]);
+
+  return (
+    <TaskContext.Provider value={{ tasks, addTask, toggleTask, deleteTask, setFilter }}>
+      <div className="app">
+        <h1>Task Manager</h1>
+        <TaskForm />
+        <TaskFilter />
+        <TaskList tasks={filteredTasks} />
+      </div>
+    </TaskContext.Provider>
+  );
+};
+
+export default App;
