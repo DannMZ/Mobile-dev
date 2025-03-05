@@ -1,4 +1,4 @@
-import React, { createContext, useState,useEffect, useMemo, ReactNode } from 'react';
+import React, { createContext, useState,useEffect,useCallback, useMemo, ReactNode } from 'react';
 
 // Типи для завдань
 interface Task {
@@ -43,27 +43,25 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
         localStorage.setItem('theme', theme);
       }, [theme]);
 
-
-  const addTask = (text: string) => {
-    setTasks([...tasks, { id: Date.now(), text, completed: false }]);
-  };
-
-  const toggleTask = (id: number) => {
-    setTasks(tasks.map(task => 
-      task.id === id ? { ...task, completed: !task.completed } : task
-    ));
-  };
-
-  const deleteTask = (id: number) => {
-    setTasks(tasks.filter(task => task.id !== id));
-  };
-
-  const editTask = (id: number, newText: string) => {
-    setTasks(tasks.map(task => 
-      task.id === id ? { ...task, text: newText } : task
-    ));
-  };
-
+      const addTask = useCallback((text: string) => {
+        setTasks(prevTasks => [...prevTasks, { id: Date.now(), text, completed: false }]);
+      }, []);
+      
+      const toggleTask = useCallback((id: number) => {
+        setTasks(prevTasks => prevTasks.map(task => 
+          task.id === id ? { ...task, completed: !task.completed } : task
+        ));
+      }, []);
+      
+      const deleteTask = useCallback((id: number) => {
+        setTasks(prevTasks => prevTasks.filter(task => task.id !== id));
+      }, []);
+      
+      const editTask = useCallback((id: number, newText: string) => {
+        setTasks(prevTasks => prevTasks.map(task => 
+          task.id === id ? { ...task, text: newText } : task
+        ));
+      }, []);
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
   };
