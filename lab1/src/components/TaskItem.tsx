@@ -1,18 +1,20 @@
-import React, { useContext, useState } from 'react';
-import { AppContext,Task } from '../context/AppContext';
+import React, { useState } from 'react';
+import { Task } from '../context/AppContext';
 
 interface TaskItemProps {
   task: Task
+  onToggle?: (id: number) => void; // Обробник зі значенням за замовчуванням
+  onDelete?: (id: number) => void; // Обробник зі значенням за замовчуванням
+  onEdit?: (id: number, newText: string) => void; // Обробник зі значенням за замовчуванням
 }
 
-const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
-  const { toggleTask, deleteTask, editTask } = useContext(AppContext)!;
+const TaskItem: React.FC<TaskItemProps> = ({ task, onToggle = () => {}, onDelete = () => {}, onEdit = () => {} }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedText, setEditedText] = useState(task.text);
 
   const handleEdit = () => {
     if (isEditing) {
-      editTask(task.id, editedText);
+      onEdit(task.id, editedText);
     }
     setIsEditing(!isEditing);
   };
@@ -23,7 +25,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
         <input
           type="checkbox"
           checked={task.completed}
-          onChange={() => toggleTask(task.id)}
+          onChange={() => onToggle(task.id)}
         />
         {isEditing ? (
           <input
@@ -37,7 +39,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
           </span>
         )}
         <button onClick={handleEdit}>{isEditing ? 'Save' : 'Edit'}</button>
-        <button onClick={() => deleteTask(task.id)}>Delete</button>
+        <button onClick={() => onDelete(task.id)}>Delete</button>
       </div>
       <div style={{ fontSize: '0.8em', color: '#666' }}>
         <p>Created: {task.createdAt}</p>
