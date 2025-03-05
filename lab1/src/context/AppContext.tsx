@@ -1,14 +1,5 @@
 import React, { createContext, useState,useEffect,useCallback, useMemo, ReactNode } from 'react';
 
-// Типи для завдань
-export interface Task {
-    id: number;
-    text: string;
-    completed: boolean;
-    createdAt: string; // Дата створення
-    completedAt?: string; // Дата завершення (опціонально)
-  }
-  
   interface AppContextType {
     tasks: Task[];
     addTask: (text: string) => void;

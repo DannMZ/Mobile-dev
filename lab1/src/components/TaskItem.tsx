@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Task } from '../context/AppContext';
 
 interface TaskItemProps {
   task: Task
