@@ -1,10 +1,12 @@
-import React, { useContext } from 'react';
-import { AppContext } from '../context/AppContext';
+import React from 'react';
+import { Task } from '../context/AppContext';
 import TaskItem from './TaskItem';
 
-const TaskList: React.FC = () => {
-  const { tasks } = useContext(AppContext)!;
+interface TaskListProps {
+  tasks: Task[]; // Описуємо пропс tasks
+}
 
+const TaskList: React.FC<TaskListProps> = ({ tasks }) => {
   return (
     <ul style={{ listStyle: 'none', padding: 0 }}>
       {tasks.map(task => (
