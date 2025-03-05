@@ -6,7 +6,7 @@ const TaskList: React.FC = () => {
   const { tasks } = useContext(AppContext)!;
 
   return (
-    <ul>
+    <ul style={{ listStyle: 'none', padding: 0 }}>
       {tasks.map(task => (
         <TaskItem key={task.id} task={task} />
       ))}

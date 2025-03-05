@@ -1,13 +1,14 @@
 import React, { createContext, useState,useEffect,useCallback, useMemo, ReactNode } from 'react';
 
 // Типи для завдань
-interface Task {
+export interface Task {
     id: number;
     text: string;
     completed: boolean;
+    createdAt: string; // Дата створення
+    completedAt?: string; // Дата завершення (опціонально)
   }
   
-  // Типи для контексту
   interface AppContextType {
     tasks: Task[];
     addTask: (text: string) => void;
@@ -43,15 +44,29 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
         localStorage.setItem('theme', theme);
       }, [theme]);
 
-      const addTask = useCallback((text: string) => {
-        setTasks(prevTasks => [...prevTasks, { id: Date.now(), text, completed: false }]);
-      }, []);
+      const addTask = (text: string) => {
+        const newTask: Task = {
+          id: Date.now(),
+          text,
+          completed: false,
+          createdAt: new Date().toLocaleString(), // Поточна дата і час
+        };
+        setTasks([...tasks, newTask]);
+      };
       
-      const toggleTask = useCallback((id: number) => {
-        setTasks(prevTasks => prevTasks.map(task => 
-          task.id === id ? { ...task, completed: !task.completed } : task
-        ));
-      }, []);
+      const toggleTask = (id: number) => {
+        setTasks(tasks.map(task => {
+          if (task.id === id) {
+            const updatedTask = {
+              ...task,
+              completed: !task.completed,
+              completedAt: task.completed ? undefined : new Date().toLocaleString(), // Оновлюємо дату завершення
+            };
+            return updatedTask;
+          }
+          return task;
+        }));
+      };
       
       const deleteTask = useCallback((id: number) => {
         setTasks(prevTasks => prevTasks.filter(task => task.id !== id));

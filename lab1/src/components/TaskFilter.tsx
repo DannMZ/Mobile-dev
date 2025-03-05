@@ -1,5 +1,6 @@
 import React, { useContext,useState } from 'react';
 import { AppContext } from '../context/AppContext';
+import TaskList  from '../components/TaskList';
 
 const TaskFilter: React.FC = () => {
   const { tasks, theme, toggleTheme } = useContext(AppContext)!;
@@ -17,14 +18,15 @@ const TaskFilter: React.FC = () => {
       <button onClick={() => setFilter('active')}>Active</button>
       <button onClick={() => setFilter('completed')}>Completed</button>
       <button onClick={toggleTheme}>Toggle Theme ({theme})</button>
-
+{/* 
       <ul>
         {filteredTasks.map(task => (
           <li key={task.id} style={{ textDecoration: task.completed ? 'line-through' : 'none' }}>
             {task.text}
           </li>
         ))}
-      </ul>
+      </ul> */}
+      <TaskList tasks={filteredTasks} />
     </div>
   );
 };
