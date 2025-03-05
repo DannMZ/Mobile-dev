@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/TaskItem.css';
 
 interface TaskItemProps {
   task: Task
@@ -19,8 +20,8 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onToggle = () => {}, onDelete
   };
 
   return (
-    <li style={{ marginBottom: '10px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }}>
-      <div>
+    <li className="task-item">
+      <div className="task-content">
         <input
           type="checkbox"
           checked={task.completed}
@@ -31,16 +32,21 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onToggle = () => {}, onDelete
             type="text"
             value={editedText}
             onChange={(e) => setEditedText(e.target.value)}
+            className="edit-input"
           />
         ) : (
-          <span style={{ textDecoration: task.completed ? 'line-through' : 'none' }}>
+          <span className={`task-text ${task.completed ? 'completed' : ''}`}>
             {task.text}
           </span>
         )}
-        <button onClick={handleEdit}>{isEditing ? 'Save' : 'Edit'}</button>
-        <button onClick={() => onDelete(task.id)}>Delete</button>
+        <button onClick={handleEdit} className="edit-button">
+          {isEditing ? 'Save' : 'Edit'}
+        </button>
+        <button onClick={() => onDelete(task.id)} className="delete-button">
+          Delete
+        </button>
       </div>
-      <div style={{ fontSize: '0.8em', color: '#666' }}>
+      <div className="task-dates">
         <p>Created: {task.createdAt}</p>
         {task.completed && <p>Completed: {task.completedAt}</p>}
       </div>

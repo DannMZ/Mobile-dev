@@ -1,6 +1,6 @@
 import React, { createContext, useState,useEffect,useCallback, useMemo, ReactNode } from 'react';
 
-  interface AppContextType {
+interface AppContextType {
     tasks: Task[];
     addTask: (text: string) => void;
     toggleTask: (id: number) => void;

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
 import TaskItem from './TaskItem';
+import '../styles/TaskList.css';
 
 interface TaskListProps {
   tasks: {
@@ -16,7 +17,7 @@ const TaskList: React.FC<TaskListProps> = ({ tasks }) => {
   const { toggleTask, deleteTask, editTask } = useContext(AppContext)!;
 
   return (
-    <ul style={{ listStyle: 'none', padding: 0 }}>
+    <ul className="task-list">
       {tasks.map(task => (
         <TaskItem
           key={task.id}
