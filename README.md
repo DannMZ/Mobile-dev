@@ -4,18 +4,20 @@ This repository contains laboratory works for the Mobile Application Development
 
 ## Technologies Used
 - **Programming Languages**: Typescript
-- **Frameworks & Tools**: React
+- **Frameworks & Tools**: 
+1. React + Vite
+2. React Native + Expo
 - **Databases**: None
 - **APIs**: None
 
 ## Installation & Setup
 1. Clone the repository:
    ```sh
-   git clone https://github.com/DannMZ/Mobile-dev.git
+   git clone -b Lab2 --single-branch https://github.com/DannMZ/Mobile-dev.git
    ```
 2. Navigate to the specific lab directory:
    ```sh
-   cd Mobile-dev/lab1
+   cd Mobile-dev/lab2
    ```
 3. Follow the setup instructions in each lab's README file.
 
