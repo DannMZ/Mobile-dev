@@ -20,13 +20,6 @@
     "react-native-web": "~0.19.13",
     "@expo/metro-runtime": "~4.0.1"
   },
-  "compilerOptions": {
-    "paths": {
-      "*": [
-        "./src/types/*.d.ts"
-      ]
-    }
-  },
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@types/react": "~18.3.12",
