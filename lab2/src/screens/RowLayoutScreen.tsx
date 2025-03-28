@@ -1,11 +1,12 @@
 import { View, StyleSheet } from "react-native";
+import {ColorSquare} from "../components/ColorSquare"
 
 const RowLayoutScreen = () => {
   return (
     <View style={styles.container}>
-      <View style={[styles.square, { backgroundColor: "red" }]} />
-      <View style={[styles.square, { backgroundColor: "green" }]} />
-      <View style={[styles.square, { backgroundColor: "blue" }]} />
+      <ColorSquare color= "red" />
+      <ColorSquare color= "green" />
+      <ColorSquare color= "blue" />
     </View>
   );
 };

@@ -1,4 +1,5 @@
 import { View, StyleSheet } from "react-native";
+import {ColorSquare} from "../components/ColorSquare"
 
 const GridLayoutScreen = () => {
     const colors = ["red", "green", "blue", "yellow", "purple", "orange", "pink", "brown"];
@@ -6,7 +7,7 @@ const GridLayoutScreen = () => {
     return (
       <View style={styles.container}>
         {colors.map((color, index) => (
-          <View key={index} style={[styles.square, { backgroundColor: color }]} />
+          <ColorSquare color={color} />
         ))}
       </View>
     );
@@ -18,11 +19,6 @@ const GridLayoutScreen = () => {
       flexDirection: "row",
       flexWrap: "wrap",
       justifyContent: "space-around",
-    },
-    square: {
-      width: 60,
-      height: 50,
-      margin: 5, 
     },
   });
 

@@ -1,14 +1,15 @@
 import { View, StyleSheet } from "react-native";
+import {ColorSquare} from "../components/ColorSquare"
 
 const ColumnLayoutScreen = () => {
-    return (
-      <View style={styles.container}>
-        <View style={[styles.square, { backgroundColor: "red" }]} />
-        <View style={[styles.square, { backgroundColor: "green" }]} />
-        <View style={[styles.square, { backgroundColor: "blue" }]} />
-      </View>
-    );
-  };
+  return (
+    <View style={styles.container}>
+      <ColorSquare color= "red" />
+      <ColorSquare color= "green" />
+      <ColorSquare color= "blue" />
+    </View>
+  );
+};
   
   const styles = StyleSheet.create({
     container: {
@@ -17,10 +18,6 @@ const ColumnLayoutScreen = () => {
       justifyContent: "space-between", // Спробуйте змінити на "center"
       alignItems: "center",
     },
-  square: {
-    width: 69,
-    height: 69,
-  },
 });
 
 export default ColumnLayoutScreen;
