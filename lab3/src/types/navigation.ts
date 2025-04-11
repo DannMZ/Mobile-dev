@@ -1,33 +1,39 @@
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-import { RouteProp } from '@react-navigation/native';
+// types/navigation.ts
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
+import { CompositeScreenProps } from '@react-navigation/native';
 
 // Root Stack Param List
 export type RootStackParamList = {
+  Home: undefined;
   MainTabs: undefined;
   Details: { itemId: number; title: string };
+  Profile: undefined;
 };
 
 // Tab Param List
 export type MainTabParamList = {
   Home: undefined;
   Profile: undefined;
+  Details: { itemId: number; title: string };
+  MainTabs: undefined;
 };
 
-// Об'єднуємо типи для навігації
-export type CompositeNavigationProp = BottomTabNavigationProp<MainTabParamList> & 
-  NativeStackNavigationProp<RootStackParamList>;
+// Комбіновані типи для пропсів екранів у табах
+type HomeScreenProps = CompositeScreenProps<
+  BottomTabScreenProps<MainTabParamList, 'Home'>,
+  NativeStackScreenProps<RootStackParamList, 'Home'>
+>;
 
-// Пропси для екранів
-export type HomeScreenProps = {
-  navigation: CompositeNavigationProp;
-};
+type ProfileScreenProps = CompositeScreenProps<
+  BottomTabScreenProps<MainTabParamList, 'Profile'>,
+  NativeStackScreenProps<RootStackParamList, 'Profile'>
+>;
 
-export type ProfileScreenProps = {
-  navigation: CompositeNavigationProp;
-};
+// Тип для DetailsScreen (лише Stack)
+export type DetailsScreenProps = CompositeScreenProps<
+  BottomTabScreenProps<MainTabParamList, 'Details'>,
+  NativeStackScreenProps<RootStackParamList,'Details'>
+>;
 
-export type DetailsScreenProps = {
-  route: RouteProp<RootStackParamList, 'Details'>;
-  navigation: NativeStackNavigationProp<RootStackParamList>;
-};
+export { HomeScreenProps, ProfileScreenProps };
