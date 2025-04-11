@@ -1,9 +1,7 @@
 import { View, Text, Button } from 'react-native';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { DetailsScreenProps } from '../types/navigation';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Details'>;
-
-export default function DetailsScreen({ route, navigation }: Props) {
+export default function DetailsScreen({ route, navigation }: DetailsScreenProps) {
   const { itemId, title } = route.params;
 
   return (

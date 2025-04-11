@@ -1,14 +1,9 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import HomeScreen from '../screens/HomeScreen';
-import DetailsScreen from '../screens/DetailsScreen';
 import ProfileScreen from '../screens/ProfileScreen';
-
-export type RootStackParamList = {
-  Home: undefined;
-  Details: { itemId: number; title: string };
-  Profile: undefined;
-};
+import DetailsScreen from '../screens/DetailsScreen';
+import { RootStackParamList } from '../types/navigation';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
