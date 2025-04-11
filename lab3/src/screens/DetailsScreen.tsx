@@ -1,8 +1,20 @@
 import { View, Text, Button } from 'react-native';
-import { DetailsScreenProps } from '../types/navigation';
+import { DetailsScreenProps, RootStackParamList } from '../types/navigation';
+import { useEffect } from 'react';
 
 export default function DetailsScreen({ route, navigation }: DetailsScreenProps) {
   const { itemId, title } = route.params;
+  useEffect(() => {
+    navigation.setOptions({
+      title: 'Оновлений заголовок',
+      headerLeft: () => (
+        <Button 
+          onPress={() => navigation.goBack()} 
+          title="Назад" 
+        />
+      ),
+    });
+  }, [navigation]);
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
