@@ -1,20 +1,16 @@
+// navigation/TabNavigator.tsx
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from '../screens/HomeScreenT';
+import HomeScreen from '../screens/HomeScreen';
 import ProfileScreen from '../screens/ProfileScreen';
-import DetailsScreen from '../screens/DetailsScreen';
-import { TabParamList } from '../types/navigation';
+import { MainTabParamList } from '../types/navigation';
 
-
-const Tab = createBottomTabNavigator<TabParamList>();
+const Tab = createBottomTabNavigator<MainTabParamList>();
 
 export default function TabNavigator() {
   return (
     <Tab.Navigator>
-      <Tab.Screen 
-        name="HomeTab" 
-        component={HomeScreen} 
-        options={{ title: 'Home' }}
-      />
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );
 }

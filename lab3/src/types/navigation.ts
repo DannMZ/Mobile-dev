@@ -1,35 +1,33 @@
-import { NativeStackScreenProps } from "@react-navigation/native-stack/lib/typescript/src/types";
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import { RouteProp } from '@react-navigation/native';
 
-
-
-import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
-import { CompositeScreenProps } from '@react-navigation/native';
-
-  // Комбіновані пропси для екранів у Tab-навігаторі
-  export  type TabScreenProps<T extends keyof TabParamList> = CompositeScreenProps<
-    BottomTabScreenProps<TabParamList, T>,
-    NativeStackScreenProps<RootStackParamList>
-  >;
-
-// src/types/navigation.ts
+// Root Stack Param List
 export type RootStackParamList = {
-    Home: undefined;
-    MainTabs: undefined;
-    Details: { itemId: number; title: string };
-    Profile: undefined;
-  };
-  
-  // Додаємо типи для пропсів екранів
-  export type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
-  export type DetailsScreenProps = NativeStackScreenProps<RootStackParamList, 'Details'>;
-  export type ProfileScreenProps = NativeStackScreenProps<RootStackParamList, 'Profile'>;
+  MainTabs: undefined;
+  Details: { itemId: number; title: string };
+};
 
+// Tab Param List
+export type MainTabParamList = {
+  Home: undefined;
+  Profile: undefined;
+};
 
-  
-  // Визначаємо типи для Tab-навігатора
-  export type TabParamList = {
-    HomeTab: undefined;
-    ProfileTab: undefined;
-    DetailsTab: { itemId: number; title: string };
-  };
-  
+// Об'єднуємо типи для навігації
+export type CompositeNavigationProp = BottomTabNavigationProp<MainTabParamList> & 
+  NativeStackNavigationProp<RootStackParamList>;
+
+// Пропси для екранів
+export type HomeScreenProps = {
+  navigation: CompositeNavigationProp;
+};
+
+export type ProfileScreenProps = {
+  navigation: CompositeNavigationProp;
+};
+
+export type DetailsScreenProps = {
+  route: RouteProp<RootStackParamList, 'Details'>;
+  navigation: NativeStackNavigationProp<RootStackParamList>;
+};

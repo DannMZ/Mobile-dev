@@ -1,15 +1,13 @@
 import { View, Text, Button } from 'react-native';
-import { TabScreenProps } from '../types/navigation';
+import { HomeScreenProps } from '../types/navigation';
 
-type Props = TabScreenProps<'HomeTab'>;
-
-export default function HomeScreen({ navigation }: Props) {
+export default function HomeScreen({ navigation }: HomeScreenProps) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home Screen</Text>
       <Button
         title="Go to Details"
-        onPress={() => navigation.navigate('DetailsTab', { 
+        onPress={() => navigation.navigate('Details', { 
           itemId: 42, 
           title: 'Sample Item' 
         })}
