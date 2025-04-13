@@ -19,7 +19,7 @@ export type MainTabParamList = {
   MainTabs: undefined;
 };
 
-// Комбіновані типи для пропсів екранів у табах
+
 type HomeScreenProps = CompositeScreenProps<
   BottomTabScreenProps<MainTabParamList, 'Home'>,
   NativeStackScreenProps<RootStackParamList, 'Home'>
@@ -30,10 +30,9 @@ type ProfileScreenProps = CompositeScreenProps<
   NativeStackScreenProps<RootStackParamList, 'Profile'>
 >;
 
-// Тип для DetailsScreen (лише Stack)
-export type DetailsScreenProps = CompositeScreenProps<
+type DetailsScreenProps = CompositeScreenProps<
   BottomTabScreenProps<MainTabParamList, 'Details'>,
   NativeStackScreenProps<RootStackParamList,'Details'>
 >;
 
-export { HomeScreenProps, ProfileScreenProps };
+export { HomeScreenProps, ProfileScreenProps,DetailsScreenProps };

@@ -17,15 +17,8 @@ function HomeStack() {
       <Stack.Screen 
         name="Details" 
         component={DetailsScreen} 
-        options={{ 
-          title: 'Details',
-          headerRight: () => (
-            <Button 
-              title="Info" 
-              onPress={() => alert('Info!')} 
-            />
-          ),
-        }} 
+        options={{ title: 'Details' }}
+        initialParams={{ itemId: 99, title: 'From Tab' }} // Параметри тут
       />
     </Stack.Navigator>
   );
@@ -44,7 +37,8 @@ export default function TabNavigator() {
       
         name="Details" 
         component={DetailsScreen}
-        options={{ title: 'Details' }} // Кастомний заголовок для таби
+        options={{ title: 'Details from tab' }}
+        initialParams={{ itemId: 99, title: 'From Tab' }} // Параметри тут
       />
       
     </Tab.Navigator>

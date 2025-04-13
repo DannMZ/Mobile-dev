@@ -5,6 +5,7 @@ export default function ProfileScreen({ navigation }: ProfileScreenProps) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Profile Screen</Text>
+      <Text>Thats my profile</Text>
       <Button
         title="Go to Details"
         onPress={() => navigation.navigate('Details', {
