@@ -11,28 +11,11 @@ export type RootStackParamList = {
   Profile: undefined;
 };
 
-// Tab Param List
-export type MainTabParamList = {
-  Home: undefined;
-  Profile: undefined;
-  Details: { itemId: number; title: string };
-  MainTabs: undefined;
-};
 
+type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
-type HomeScreenProps = CompositeScreenProps<
-  BottomTabScreenProps<MainTabParamList, 'Home'>,
-  NativeStackScreenProps<RootStackParamList, 'Home'>
->;
+type ProfileScreenProps = NativeStackScreenProps<RootStackParamList, 'Profile'>;
 
-type ProfileScreenProps = CompositeScreenProps<
-  BottomTabScreenProps<MainTabParamList, 'Profile'>,
-  NativeStackScreenProps<RootStackParamList, 'Profile'>
->;
-
-type DetailsScreenProps = CompositeScreenProps<
-  BottomTabScreenProps<MainTabParamList, 'Details'>,
-  NativeStackScreenProps<RootStackParamList,'Details'>
->;
+type DetailsScreenProps = NativeStackScreenProps<RootStackParamList,'Details'>;
 
 export { HomeScreenProps, ProfileScreenProps,DetailsScreenProps };

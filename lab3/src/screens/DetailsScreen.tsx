@@ -2,6 +2,7 @@
 import { View, Text, Button, StyleSheet } from 'react-native';
 import { DetailsScreenProps } from '../types/navigation';
 import { useState, useEffect } from 'react';
+import React from 'react';
 
 export default function DetailsScreen({ route, navigation }: DetailsScreenProps) {
   const { itemId, title } = route.params;
