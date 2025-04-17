@@ -1,95 +1,95 @@
-# **React Native Лабораторні роботи**  
+# **React Native Lab Works**  
 
-## **📌 Перелік лабораторних робіт**  
+## **📌 List of Lab Works**  
 
-### **🔹 Лабораторна 1: Базовий додаток React (ToDo List)**  
-**Технології:**  
+### **🔹 Lab 1: Basic React App (ToDo List)**  
+**Technologies Used:**  
 - React Hooks (`useState`, `useEffect`, `useCallback`, `useMemo`, `useRef`)  
-- Context API для глобального стану  
-- Локальне сховище (`localStorage`)  
-- Деструктуризація пропсів  
-- Оптимізація рендерингу (`key` для списків)  
+- Context API for global state  
+- Local storage (`localStorage`)  
+- Props destructuring  
+- Rendering optimization (`key` for lists)  
 
-**Функціонал:**  
-✅ Додавання/видалення/редагування завдань  
-✅ Фільтрація (всі/активні/виконані)  
-✅ Темна/світла тема  
-✅ Автозбереження стану  
+**Functionality:**  
+✅ Add/delete/edit tasks  
+✅ Filtering (all/active/completed)  
+✅ Dark/light theme toggle  
+✅ Auto-save state  
 
 ---
 
-### **🔹 Лабораторна 2: Компоненти макету (Flexbox)**  
-**Технології:**  
+### **🔹 Lab 2: Layout Components (Flexbox)**  
+**Technologies Used:**  
 - Flexbox (`flexDirection`, `justifyContent`, `alignItems`)  
-- `Dimensions` для адаптивності  
-- `Platform.select` для різних ОС  
+- `Dimensions` for responsiveness  
+- `Platform.select` for OS-specific styles  
 - `ScrollView`  
 
-**Реалізовані макети:**  
-📏 **Рядок** (`flexDirection: 'row'`)  
-📐 **Колонка** (`flexDirection: 'column'`)  
-🔳 **Сітка** (`flexWrap: 'wrap'`)  
+**Implemented Layouts:**  
+📏 **Row** (`flexDirection: 'row'`)  
+📐 **Column** (`flexDirection: 'column'`)  
+🔳 **Grid** (`flexWrap: 'wrap'`)  
 
 ---
 
-### **🔹 Лабораторна 3: Навігація**  
-**Технології:**  
+### **🔹 Lab 3: Navigation**  
+**Technologies Used:**  
 - React Navigation (`@react-navigation/native`)  
-- Stack Navigator (переходи між екранами)  
-- Tab Navigator (нижня панель)  
-- Drawer Navigator (бічне меню)  
-- Параметри маршрутів (`route.params`)  
+- Stack Navigator (screen transitions)  
+- Tab Navigator (bottom tabs)  
+- Drawer Navigator (side menu)  
+- Route parameters (`route.params`)  
 
-**Функціонал:**  
-➡️ Перехід між 3+ екранами  
-🔄 Передача даних між екранами  
-🎨 Кастомні хедери  
-
----
-
-### **🔹 Лабораторна 4: Ввід даних та геолокація**  
-**Технології:**  
-- Форми (`TextInput`, `Switch`, `Picker`)  
-- `expo-location` для GPS  
-- `react-native-maps` (маркери, полігони)  
-- Валідація даних  
-
-**Функціонал:**  
-📍 Відображення локації користувача  
-🗺️ Мапа з маркерами  
-✈️ Toggle-логіка (Wi-Fi/Airplane Mode)  
+**Functionality:**  
+➡️ Navigation between 3+ screens  
+🔄 Data passing between screens  
+🎨 Custom headers  
 
 ---
 
-### **🔹 Лабораторна 5: Жести та анімації**  
-**Технології:**  
-- `react-native-gesture-handler` (свайпи)  
+### **🔹 Lab 4: User Input & Geolocation**  
+**Technologies Used:**  
+- Forms (`TextInput`, `Switch`, `Picker`)  
+- `expo-location` for GPS  
+- `react-native-maps` (markers, polygons)  
+- Input validation  
+
+**Functionality:**  
+📍 Display user location  
+🗺️ Map with custom markers  
+✈️ Toggle logic (Wi-Fi/Airplane Mode)  
+
+---
+
+### **🔹 Lab 5: Gestures & Animations**  
+**Technologies Used:**  
+- `react-native-gesture-handler` (swipes)  
 - `Pressable` vs `TouchableOpacity`  
-- `ScrollView`/`FlatList` з pull-to-refresh  
+- `ScrollView`/`FlatList` with pull-to-refresh  
 - `react-native-reanimated`  
 
-**Реалізовані жести:**  
-👆 Тач (натискання, довгий тап)  
-🔄 Свайпи (видалення елементів)  
-📜 Прокрутка з підвантаженням  
+**Implemented Gestures:**  
+👆 Touch (press, long press)  
+🔄 Swipe-to-delete items  
+📜 Scroll with lazy loading  
 
 ---
 
-### **🔹 Лабораторна 6: Сповіщення**  
-**Технології:**  
-- `react-native-modal` (кастомні модалки)  
+### **🔹 Lab 6: Notifications**  
+**Technologies Used:**  
+- `react-native-modal` (custom modals)  
 - `react-native-toast-message`  
-- Індикатор завантаження  
+- Loading indicators  
 
-**Типи сповіщень:**  
-🟢 Confirm Modal (Так/Ні)  
+**Notification Types:**  
+🟢 Confirm Modal (Yes/No)  
 🔴 Error Modal (Fix/Ignore)  
-💬 Toast (автозникнення)  
-⏳ Loading Spinner  
+💬 Auto-dismissing toast  
+⏳ Loading spinner  
 
 ---
 
-## **🚀 Як запустити?**  
+## **🚀 How to Run?**  
 ```bash
 git clone [repo-url]
 cd [project-folder]
@@ -97,7 +97,7 @@ npm install
 npx expo start
 ```
 
-## **📚 Використані бібліотеки**  
+## **📚 Key Libraries**  
 - `expo`  
 - `@react-navigation/*`  
 - `react-native-maps`  
@@ -105,6 +105,5 @@ npx expo start
 - `react-native-toast-message`  
 
 ---
-
 **© 2025 | Hnatyuk-Shapoval Danyil**  
 📧 **LinkedIn:** [[mazzarin](https://www.linkedin.com/in/mazzarin/)]
